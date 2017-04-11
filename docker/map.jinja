@@ -1,0 +1,8 @@
+{% set docker = salt['grains.filter_by']({
+    'RedHat': {
+        'pkg': 'docker-ce',
+        'service': 'docker',
+        'config': '/etc/docker/daemon.json',
+        'config_src': 'salt://docker/files/daemon.json',
+    },
+}, merge=salt['pillar.get']('pound:lookup')) %}
